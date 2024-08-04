@@ -23,10 +23,12 @@ def predict():
         Area = request.form['Area']
         Item = request.form['Item']
 
-        features = np.array([[ Area, Item,Year, average_rain_fall_mm_per_year, pesticides_tonnes,avg_temp]],
+        features = np.array([[Area,Item,Year,average_rain_fall_mm_per_year, pesticides_tonnes,avg_temp]],
                             dtype=object)
         transformed_features = preprocessor.transform(features)
-        prediction = dtr.predict(transformed_features).reshape(1, -1)
+        prediction = dtr.predict(transformed_features)#.reshape(1, -1)
+        prediction = ', '.join(map(str, prediction.flatten()))
+
 
         return render_template('index.html', prediction=prediction)
 

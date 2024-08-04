@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookBuddy</title>
+    <link rel="stylesheet" href="static/style1.css">
+</head>
+<body>
+    <header>
+        <img src="https://images.wallpaperscraft.com/image/single/books_library_shelves_138556_3840x2400.jpg" alt="">
+        <div class="nav">
+            <h1>Meet your next favourite book</h1>
+            <p>"BookBuddy: Your ultimate destination for personalized book recommendations, connecting readers with their next favorite read effortlessly."</p>
+        </div>
+        <nav>
+            <div class="navbar">
+                <h1>BookBuddy</h1>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="/recommend">Recommend</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="black"></div>
+    <div class="line">
+        <hr>
+    </div>
+    <main>
+        <div class="title">
+            <h1>Recommend Books</h1>
+        </div>
+        <form action="/recommend_books" method="post">
+            <input name="user_input" type="text" class="book" placeholder="Name of your book"><br>
+                    <input type="submit" class="submit">
+        </form>
+        <div class="hero">
+            {% if data %}
+                {% for i in data%}
+            <div class="card-container">
+                <div class="card">
+                    <img src="{{ i[2] }}" alt="">
+                    <h3> {{ i[0] }}</h3>
+                    <p>{{ i[1] }}</p>
+                </div>
+            </div> 
+            {% endfor %}
+            {% endif %}
+        </div>
+    </main>
+    <div class="line">
+        <hr>
+    </div>
+    <footer>
+        <div id="contact">
+            <h1>Contact Us</h1>
+            <p>Mob No : 8604962653</p>
+            <p>Email : alisadiq9014@gmail.com</p>
+        </div>
+    </footer>
+</body>
+</html>
